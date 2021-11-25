@@ -10,20 +10,23 @@
  */
 int main(__attribute__((unused)) int ac, char **av)
 {
+	int loop = 1;
 	int c = 0;
 	char buffer[strlen(av[c])];
 
-    printf("$ ");
+	while (loop == 1)
+	{
+		printf("$ ");
 
-	fgets(buffer, 49, stdin);
+		fgets(buffer, 49, stdin);
 
-	printf("%s", buffer);
+		printf("%s", buffer);
+	}
 /**
 	tok = strtok(buffer, 32);
 
 	printf("%s\n", tok);
 */
-	open("./get_line", O_RDONLY);
     return (0);
 }
 
