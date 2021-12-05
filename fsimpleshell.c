@@ -7,73 +7,58 @@
  */
 int main(__attribute__((unused)) int ac, char **av)
 {
-	int i = 1;
-	int c = 0;
-	char buffer[_strlen(av[c])];
+	int i = 1, c = 0, status;
+	size_t characters, buffsize = 49;
 	const char delimiteur[] = " ";
-	char *bufftest = NULL;
-	char *tok;
-	pid_t my_pid;
-    pid_t child_pid;
-	int status;
-	char *exit = "exit";
-	char *command;
+	char *buffer, *tok, *command, *exit = "exit";
+	pid_t my_pid, child_pid;
 
+	buffer = (char *)malloc(buffsize * sizeof(char));
+	if (buffer == NULL)
+		return (0);
 	while (i = 1)
 	{
 		my_pid = getpid();
-
 		if (my_pid == -1)
 		{
 			perror("Error:");
 			return (1);
 		}
-
 		_printf("$ ");
-
-		bufftest = fgets(buffer, 49, stdin); /* remplacer par read ? */
-
-		if (_strcmp(bufftest, "\0") == 0)
-			return (0);
-
-		bufftest[_strlen(bufftest) - 1] = '\0';
-
-		command = bufftest;
-
-		tok = strtok(buffer, delimiteur);
-
-		if (_strcmp(bufftest, exit) == 0)
-			return (0);
-
-		if (_strcmp(bufftest, "env") == 0)
-			env();
-
-		if (tok == NULL)
+		characters = getline(&buffer, &buffsize, stdin);
+		if (characters == -1)
 		{
-			_printf("You have to send a command.\n");
+			_printf("\n");
+			return (0);
 		}
-
-		while (tok != NULL)
+		buffer[_strlen(buffer) - 1] = '\0';
+		command = buffer;
+		tok = strtok(buffer, delimiteur);
+		if (_strcmp(buffer, exit) == 0)
+			return (0);
+		if (tok == NULL)
+			_printf("You have to send a command.\n");
+		if (_strcmp(buffer, "env") == 0)
+			env();
+		else
 		{
-			if (access(bufftest, R_OK) != 0)
+			while (tok != NULL)
 			{
-				_printf("Le fichier n'est pas accessible.\n");
-
-			}
-			else
-			{
-				child_pid = fork();
-
-				if (child_pid == 0)
+				if (access(buffer, R_OK) != 0)
+					_printf("Le fichier n'est pas accessible.\n");
+				else
 				{
-					if (execve(tok, av, NULL) == -1)
+					child_pid = fork();
+					if (child_pid == 0)
 					{
-						perror("Error:");
+						if (execve(tok, av, NULL) == -1)
+							perror("Error:");
 					}
 				}
+				tok = strtok(NULL, delimiteur);
 			}
-			tok = strtok(NULL, delimiteur);
-  		}
+		}
+		free(buffer);
 		wait(&status);
 	}
 }
