@@ -28,6 +28,7 @@ int main(__attribute__((unused)) int ac, char **av)
 		characters = getline(&buffer, &buffsize, stdin);
 		if (characters == -1)
 		{
+			free(buffer);
 			_printf("\n");
 			return (0);
 		}
@@ -35,7 +36,10 @@ int main(__attribute__((unused)) int ac, char **av)
 		command = buffer;
 		tok = strtok(buffer, delimiteur);
 		if (_strcmp(buffer, exit) == 0)
+		{
+			free(buffer);
 			return (0);
+		}
 		if (tok == NULL)
 			_printf("You have to send a command.\n");
 		if (_strcmp(buffer, "env") == 0)
@@ -58,7 +62,7 @@ int main(__attribute__((unused)) int ac, char **av)
 				tok = strtok(NULL, delimiteur);
 			}
 		}
-		free(buffer);
 		wait(&status);
 	}
+	free(buffer);
 }
