@@ -7,16 +7,16 @@
  */
 int main(__attribute__((unused)) int ac, char **av)
 {
-	int i = 1, c = 0, status;
-	size_t characters, buffsize = 49;
+	int i = 1, status, characters;
+	size_t buffsize = 49;
 	const char delimiteur[] = " ";
-	char *buffer, *tok, *command, *exit = "exit";
+	char *buffer, *tok, *exit = "exit";
 	pid_t my_pid, child_pid;
 
 	buffer = (char *)malloc(buffsize * sizeof(char));
 	if (buffer == NULL)
 		return (0);
-	while (i = 1)
+	while (i == 1)
 	{
 		my_pid = getpid();
 		if (my_pid == -1)
@@ -33,7 +33,6 @@ int main(__attribute__((unused)) int ac, char **av)
 			return (0);
 		}
 		buffer[_strlen(buffer) - 1] = '\0';
-		command = buffer;
 		tok = strtok(buffer, delimiteur);
 		if (_strcmp(buffer, exit) == 0)
 		{
@@ -65,4 +64,5 @@ int main(__attribute__((unused)) int ac, char **av)
 		wait(&status);
 	}
 	free(buffer);
+	return(0);
 }
