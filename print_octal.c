@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "main.h"
 
 /**
  * print_octal - fonction qui affiche en base 8

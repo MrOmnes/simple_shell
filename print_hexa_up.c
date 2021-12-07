@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "main.h"
 
 /**
  * print_hexa_up - print in hexadeciamal

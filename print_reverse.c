@@ -1,4 +1,4 @@
-#include "../main.h"
+#include "main.h"
 
 /**
 * print_reverse - Print a text in reverse
