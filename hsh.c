@@ -9,7 +9,7 @@ int main(__attribute__((unused)) int ac, char **av)
 {
 	int i = 1, status, characters;
 	size_t buffsize = 49;
-	const char delimiteur[] = " ";
+	const char delimiteur[] = " \n\r\t";
 	char *buffer, *tok, *exit = "exit";
 	pid_t my_pid, child_pid;
 
