@@ -14,7 +14,6 @@ int (*search_type(const char *format))(va_list)
 	{"c", print_char},
 	{"i", print_integer},
 	{"d", print_integer},
-	{"f", print_float},
 	{"s", print_char_pointer},
 	{"b", print_binary},
 	{"u", print_unsigned},
