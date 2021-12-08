@@ -1,11 +1,17 @@
 #include "main.h"
 
+void INThandler (int num)
+{
+	(void)num;
+	_printf("\n$ ");
+}
+
 /**
  * main - execve example
  *
  * Return: Always 0.
  */
-int main(__attribute__((unused)) int ac, char **av)
+int test(__attribute__((unused)) int ac, char **av)
 {
 	int status, characters;
 	size_t buffsize = 49;
@@ -13,6 +19,7 @@ int main(__attribute__((unused)) int ac, char **av)
 	char *buffer, *tok, *exit = "exit";
 	pid_t my_pid, child_pid;
 
+	signal(SIGINT, INThandler);
 	buffer = (char *)malloc(buffsize * sizeof(char));
 	if (buffer == NULL)
 		return (0);

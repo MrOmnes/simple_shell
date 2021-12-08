@@ -11,6 +11,7 @@
 void env(void);
 int stat(int ac, char **av);
 int _strcmp(char *s1, char *s2);
+void INThandler (int num);
 
 #ifndef VARIADIC_FUNCTION_H
 #define VARIADIC_FUNCTION_H
