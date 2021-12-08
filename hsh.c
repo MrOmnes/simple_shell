@@ -11,7 +11,7 @@ void INThandler (int num)
  *
  * Return: Always 0.
  */
-int test(__attribute__((unused)) int ac, char **av)
+int main(__attribute__((unused)) int ac, char **av)
 {
 	int status, characters;
 	size_t buffsize = 49;
