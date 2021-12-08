@@ -7,7 +7,7 @@
  */
 int main(__attribute__((unused)) int ac, char **av)
 {
-	int i = 1, status, characters;
+	int status, characters;
 	size_t buffsize = 49;
 	const char delimiteur[] = " \n\r\t";
 	char *buffer, *tok, *exit = "exit";
@@ -16,7 +16,7 @@ int main(__attribute__((unused)) int ac, char **av)
 	buffer = (char *)malloc(buffsize * sizeof(char));
 	if (buffer == NULL)
 		return (0);
-	while (i == 1)
+	while (1)
 	{
 		my_pid = getpid();
 		if (my_pid == -1)
@@ -24,7 +24,8 @@ int main(__attribute__((unused)) int ac, char **av)
 			perror("Error:");
 			return (1);
 		}
-		_printf("$ ");
+		if ((isatty(STDIN_FILENO)) && ((isatty(STDOUT_FILENO))))
+			_printf("$ ");
 		characters = getline(&buffer, &buffsize, stdin);
 		if (characters == -1)
 		{
