@@ -37,12 +37,35 @@ Simple_Shell \- command interpreter (shell)
 
 		"$ env"
 
+		"SHELL=/bin/bash
+
+		COLORTERM=truecolor
+
+		.
+
+		.
+
+		.
+
+		_=./hsh"
+
 	Leave Simple Shell:
 
-			"$ exit"
+		"$ exit"
 
-			"$ [ctrl + D]"
-		
+		"$ [ctrl + D]"
+
+
+	List files:
+
+
+		"$ /bin/ls"
+
+		"AUTHORS  _strlen.c  hsh  main.h  print_char.c  print_hexa_up.c  print_number.c  print_percent.c  printf.c
+
+		README.md  a.out  hsh.c  man_1_simple_shell  print_char_pointer.c  print_hexadecimal.c  print_number_unsigned_int.c  print_reverse.c   proc
+
+		_putchar.c  env.c  ls.c  print_binary.c  print_float.c  print_integer.c  print_octal.c  print_unsigned.c  strcmp.c"
 
 
 
