@@ -12,7 +12,7 @@ void env(void)
 
     while (env[index])
     {
-        printf("%s\n", env[index]);
+        _printf("%s\n", env[index]);
         ++index;
     }
 
