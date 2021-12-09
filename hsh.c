@@ -29,7 +29,7 @@ int main(__attribute__((unused)) int ac, char **av)
 		if (my_pid == -1)
 		{
 			perror("Error:");
-			return (1);
+			return (0);
 		}
 		if ((isatty(STDIN_FILENO)) && ((isatty(STDOUT_FILENO))))
 			_printf("$ ");
